@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gift of the Givers</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/APPR_POE_FINAL.styles.css" asp-append-version="true" />
+
+    <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+                background-color: #f8f9fa;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            main {
+                flex: 1;
+            }
+
+            .card {
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+                .card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+                }
+
+            .nav-link:hover {
+                color: #ffc107 !important;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Dark Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <!-- Logo / Brand -->
+                <a class="navbar-brand d-flex align-items-center fw-bold" asp-controller="Home" asp-action="Index">
+                    <span class="fs-4 me-2">🌍</span> GIFT OF THE GIVERS
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Donation" asp-action="Index">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Volunteer" asp-action="Index">Volunteer</a>
+                        </li>
+                        <!-- NEW REVIEWS LINK -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Review" asp-action="Index">Reviews</a>
+                        </li>
+
+                        <!-- Employee Portal Link (Only shows if logged in as Employee) -->
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-warning fw-bold ms-2" asp-controller="Employee" asp-action="Dashboard">👔 Employee Portal</a>
+                            </li>
+                        }
+
+                        <!-- Custom Authentication Links -->
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item ms-2">
+                                <span class="nav-link text-warning fw-bold">Hello @User.Identity.Name!</span>
+                            </li>
+                            <li class="nav-item">
+                                <form id="logoutForm" action="/Account/Logout" method="post" class="d-inline">
+                                    <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item ms-2">
+                                <a class="nav-link text-white" href="/Account/Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/Account/Login">Login</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- Custom Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center text-md-start">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5 class="fw-bold">Gift of the Givers Foundation</h5>
+                    <p class="text-muted mb-0">Serving humanity and restoring hope during times of crisis.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1">Humanitarian Relief</p>
+                    <p class="mb-0">Disaster Response</p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center text-muted">
+                <small>&copy; 2026 - Gift of the Givers Foundation Prototype</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

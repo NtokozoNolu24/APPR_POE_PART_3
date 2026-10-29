@@ -1,0 +1,14 @@
+@model IEnumerable<APPR_POE_FINAL.Models.Volunteer>
+@{ ViewData["Title"] = "Volunteers"; }
+<div class="container py-5">
+    <h2>Volunteer Sign-Ups</h2>
+    <table class="table">
+        <thead><tr><th>Name</th><th>Skills</th><th>Availability</th></tr></thead>
+        <tbody>
+            @foreach (var v in Model)
+            {
+                <tr><td>@v.Name</td><td>@v.Skills</td><td>@v.Availability</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

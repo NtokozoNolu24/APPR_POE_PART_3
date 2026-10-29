@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show text-center fw-bold mt-3 mx-5 shadow-sm rounded-3" role="alert">
+        🎉 @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<!-- Hero Section -->
+<section class="py-5 text-white" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <span class="badge bg-warning text-dark mb-3 px-3 py-2 fs-6 rounded-pill">🌍 HUMANITARIAN RELIEF AND HOPE</span>
+                <h1 class="display-3 fw-bold mb-4" style="line-height: 1.2;">Making a Difference When Communities Need It Most 🤝</h1>
+                <p class="lead mb-5" style="opacity: 0.9; font-size: 1.2rem;">
+                    Gift of the Givers provides humanitarian assistance and disaster relief to communities affected by crises in South Africa and beyond.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a asp-controller="Donation" asp-action="Index" class="btn btn-warning btn-lg fw-bold text-dark shadow px-4 py-3 rounded-pill">
+                        💳 Donate Now
+                    </a>
+                    <a asp-controller="Volunteer" asp-action="Index" class="btn btn-outline-light btn-lg shadow px-4 py-3 rounded-pill">
+                        🙋‍♂️ Become a Volunteer
+                    </a>
+                </div>
+            </div>
+
+            <!-- Floating Card -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-lg rounded-4 bg-white text-dark p-4" style="transform: rotate(2deg);">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">🌱 Responding to Crisis</h4>
+                        <p class="text-muted mb-4">Through coordinated relief efforts, dedicated volunteers, and generous donors, we work to provide essential support.</p>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success rounded-circle p-3 me-3 text-white fw-bold">100%</div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Transparency</h6>
+                                <small class="text-muted">Every donation matters.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What We Do Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Supporting Communities Through Every Crisis</h2>
+            <div class="mx-auto bg-warning mt-3" style="height: 4px; width: 60px; border-radius: 2px;"></div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4">
+                    <div class="card-body">
+                        <div class="display-4 mb-3 text-warning">🚨</div>
+                        <h4 class="fw-bold">Disaster Relief</h4>
+                        <p class="text-muted">Providing essential assistance to communities affected by natural disasters and emergencies.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4">
+                    <div class="card-body">
+                        <div class="display-4 mb-3 text-primary">📦</div>
+                        <h4 class="fw-bold">Resource Support</h4>
+                        <p class="text-muted">Coordinating food, essential supplies, and other resources where they are needed most.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4">
+                    <div class="card-body">
+                        <div class="display-4 mb-3 text-danger">❤️</div>
+                        <h4 class="fw-bold">Community Support</h4>
+                        <p class="text-muted">Working with volunteers and communities to restore hope and build resilience after a crisis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

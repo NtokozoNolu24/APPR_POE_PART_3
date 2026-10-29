@@ -1,0 +1,54 @@
+@model APPR_POE_FINAL.Models.Volunteer
+@{
+    ViewData["Title"] = "Volunteer";
+}
+
+<section class="py-5 bg-light">
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center mb-4">
+                    <p class="text-warning fw-bold">🤝 JOIN OUR TEAM</p>
+                    <h2 class="fw-bold">Become a Volunteer</h2>
+                    <p class="text-muted">Join us in supporting communities and helping during times of crisis.</p>
+                </div>
+
+                <div class="card border-0 shadow-lg rounded-4">
+                    <div class="card-body p-5">
+                        <form asp-action="Index" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                            <div class="mb-4">
+                                <label asp-for="Name" class="form-label fw-bold">👤 Full Name</label>
+                                @if (ViewBag.LoggedInName != null)
+                                {
+                                    <input asp-for="Name" class="form-control form-control-lg bg-secondary text-white" value="@ViewBag.LoggedInName" readonly />
+                                    <small class="text-success fw-bold">✔ Logged in and verified</small>
+                                }
+                                else
+                                {
+                                    <input asp-for="Name" class="form-control form-control-lg bg-light" placeholder="Enter your full name" />
+                                }
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label asp-for="Skills" class="form-label fw-bold">🛠️ Skills</label>
+                                <textarea asp-for="Skills" class="form-control form-control-lg bg-light" rows="2" placeholder="e.g., First aid, driving, administration"></textarea>
+                                <span asp-validation-for="Skills" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label asp-for="Availability" class="form-label fw-bold">⏰ Availability</label>
+                                <input asp-for="Availability" class="form-control form-control-lg bg-light" placeholder="e.g., Weekends or weekdays after 17:00" />
+                                <span asp-validation-for="Availability" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-lg w-100 fw-bold shadow">Register as Volunteer 🌟</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

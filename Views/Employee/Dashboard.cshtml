@@ -1,0 +1,53 @@
+@model APPR_POE_FINAL.Models.DashboardViewModel
+@{ ViewData["Title"] = "Admin Dashboard"; }
+<div class="container py-5">
+    <h2 class="fw-bold mb-4">?? Admin Dashboard</h2>
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm text-center p-4">
+                <h1 class="display-4">@Model.TotalVolunteers</h1>
+                <p class="text-muted fw-bold mb-0">Total Volunteers</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm text-center p-4">
+                <h1 class="display-4">@Model.TotalDonations</h1>
+                <p class="text-muted fw-bold mb-0">Total Donations</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm text-center p-4">
+                <h1 class="display-4 text-success">R@(Model.TotalMoneyRaised.ToString("N2"))</h1>
+                <p class="text-muted fw-bold mb-0">Funds Raised</p>
+            </div>
+        </div>
+    </div>
+    <div class="card border-0 shadow-sm mb-5">
+        <div class="card-header bg-dark text-white fw-bold py-3">???? Registered Volunteers</div>
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light"><tr><th>Name</th><th>Skills</th><th>Availability</th></tr></thead>
+                <tbody>
+                    @foreach (var v in Model.Volunteers)
+                    {
+                        <tr><td class="fw-bold">@v.Name</td><td>@v.Skills</td><td>@v.Availability</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-dark text-white fw-bold py-3">?? Recent Donations</div>
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light"><tr><th>Date</th><th>Amount</th><th>Type</th><th>Anonymous</th></tr></thead>
+                <tbody>
+                    @foreach (var d in Model.RecentDonations)
+                    {
+                        <tr><td>@d.DonationDate.ToString("dd MMM yyyy HH:mm")</td><td class="fw-bold text-success">@d.Currency @d.Amount.ToString("N2")</td><td>@d.DonationType</td><td>@(d.IsAnonymous ? "Yes ???" : "No")</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

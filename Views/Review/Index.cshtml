@@ -1,0 +1,75 @@
+﻿@model IEnumerable<APPR_POE_FINAL.Models.Review>
+@{
+    ViewData["Title"] = "Reviews";
+}
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">⭐ What People Are Saying</h2>
+            <p class="text-muted">Read testimonials from our donors, volunteers, and community members.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-7">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success fw-bold shadow-sm">@TempData["SuccessMessage"]</div>
+                }
+
+                @foreach (var review in Model)
+                {
+                    <div class="card border-0 shadow-sm mb-3 rounded-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <h5 class="fw-bold mb-0">@review.Name</h5>
+                                <span class="text-warning fs-5">@(new string('★', review.Rating))</span>
+                            </div>
+                            <p class="text-muted mb-2">@review.Comment</p>
+                            <small class="text-muted">@review.DatePosted.ToString("dd MMM yyyy")</small>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-lg rounded-4 sticky-top" style="top: 20px;">
+                    <div class="card-header bg-dark text-white fw-bold py-3">✍️ Leave a Review</div>
+                    <div class="card-body p-4">
+                        <form asp-action="Index" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Your Name</label>
+                                @if (ViewBag.LoggedInName != null)
+                                {
+                                    <input name="Name" class="form-control bg-secondary text-white" value="@ViewBag.LoggedInName" readonly />
+                                }
+                                else
+                                {
+                                    <input name="Name" class="form-control bg-light" required />
+                                }
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Rating (1-5)</label>
+                                <select name="Rating" class="form-select bg-light" required>
+                                    <option value="5">5 - Excellent 🌟</option>
+                                    <option value="4">4 - Very Good ⭐</option>
+                                    <option value="3">3 - Good ⭐</option>
+                                    <option value="2">2 - Fair ⭐</option>
+                                    <option value="1">1 - Poor ⭐</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Your Review</label>
+                                <textarea name="Comment" class="form-control bg-light" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-warning w-100 fw-bold text-dark shadow">Submit Review 🚀</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

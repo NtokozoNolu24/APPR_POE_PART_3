@@ -1,4 +1,4 @@
-using GiftOfTheGivers.Common;
+
 using APPR_POE_FINAL.Data;
 using APPR_POE_FINAL.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +12,7 @@ namespace APPR_POE_FINAL.Controllers
         public async Task<IActionResult> Index()
         {
             var operations = await _context.ReliefOperations.OrderByDescending(r => r.DatePosted).ToListAsync();
-            ViewBag.ReliefStatusMessage = ReliefHelper.GetReliefStatus("approved");
+          ViewBag.ReliefStatusMessage = "Approved";
             return View(operations);
         }
         public IActionResult Create() { return View(); }

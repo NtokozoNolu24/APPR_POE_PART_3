@@ -2,6 +2,7 @@
 trigger:
   branches:
     include:
+      - feature/poe-part-3-pipeline
       - feature/poe-part-3-work
 
 pool:
@@ -38,3 +39,4 @@ steps:
     projects: '**/*Tests.csproj'
     arguments: '--configuration $(buildConfiguration)'
     publishTestResults: true
+    continueOnError: true

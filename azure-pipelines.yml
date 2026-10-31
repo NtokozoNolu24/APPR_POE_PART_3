@@ -8,6 +8,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
+  project: 'APPR_POE_FINAL.csproj'
   buildConfiguration: 'Release'
 
 steps:
@@ -21,19 +22,19 @@ steps:
   displayName: 'Restore NuGet packages'
   inputs:
     command: 'restore'
-    projects: '**/*.sln'
+    projects: '$(project)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Build solution'
+  displayName: 'Build ASP.NET Core project'
   inputs:
     command: 'build'
-    projects: '**/*.sln'
+    projects: '$(project)'
     arguments: '--configuration $(buildConfiguration) --no-restore'
 
 - task: DotNetCoreCLI@2
   displayName: 'Run automated tests'
   inputs:
     command: 'test'
-    projects: '**/*.sln'
-    arguments: '--configuration $(buildConfiguration) --no-build'
+    projects: '**/*Tests.csproj'
+    arguments: '--configuration $(buildConfiguration)'
     publishTestResults: true

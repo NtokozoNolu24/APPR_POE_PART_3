@@ -1,0 +1,32 @@
+
+trigger:
+  branches:
+    include:
+      - feature/poe-part-3-work
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  project: 'APPR_POE_FINAL.csproj'
+  buildConfiguration: 'Release'
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Install .NET 8 SDK'
+  inputs:
+    packageType: 'sdk'
+    version: '8.x'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Restore NuGet packages'
+  inputs:
+    command: 'restore'
+    projects: '$(project)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build ASP.NET Core project'
+  inputs:
+    command: 'build'
+    projects: '$(project)'
+    arguments: '--configuration $(buildConfiguration) --no-restore'

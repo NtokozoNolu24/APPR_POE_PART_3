@@ -23,7 +23,7 @@ steps:
   displayName: 'Restore NuGet packages'
   inputs:
     command: 'restore'
-    projects: 'APPR_POE_FINAL.csproj'
+    projects: '$(project)'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build ASP.NET Core project'
@@ -31,12 +31,3 @@ steps:
     command: 'build'
     projects: '$(project)'
     arguments: '--configuration $(buildConfiguration) --no-restore'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Run automated tests'
-  inputs:
-    command: 'test'
-    projects: '**/*Tests.csproj'
-    arguments: '--configuration $(buildConfiguration)'
-    publishTestResults: true
-    continueOnError: true

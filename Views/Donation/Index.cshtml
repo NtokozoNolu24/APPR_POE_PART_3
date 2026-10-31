@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="text-center mb-4">
-                    <p class="text-warning fw-bold">💛 SUPPORT OUR RELIEF EFFORTS</p>
+                    <p class="text-warning fw-bold"><i class="fa-solid fa-heart"></i> SUPPORT OUR RELIEF EFFORTS</p>
                     <h2 class="fw-bold">Make a Donation</h2>
                     <p class="text-muted">Your contribution helps support humanitarian and disaster relief efforts.</p>
                 </div>
@@ -20,11 +20,11 @@
 
                             <!-- Name Field -->
                             <div class="mb-4">
-                                <label class="form-label fw-bold">👤 Donor Name</label>
+                                <label class="form-label fw-bold"><i class="fa-solid fa-user"></i> Donor Name</label>
                                 @if (ViewBag.LoggedInName != null)
                                 {
                                     <input name="DonorName" class="form-control form-control-lg bg-secondary text-white" value="@ViewBag.LoggedInName" readonly />
-                                    <small class="text-success fw-bold">✔ Logged in and verified</small>
+                                    <small class="text-success fw-bold"><i class="fa-solid fa-circle-check"></i> Logged in and verified</small>
                                 }
                                 else
                                 {
@@ -33,21 +33,21 @@
                             </div>
 
                             <div class="mb-4">
-                                <label asp-for="Amount" class="form-label fw-bold">💰 Donation Amount</label>
+                                <label asp-for="Amount" class="form-label fw-bold"><i class="fa-solid fa-money-bill-wave"></i> Donation Amount</label>
                                 <input asp-for="Amount" class="form-control form-control-lg bg-light" placeholder="Enter amount" />
                                 <span asp-validation-for="Amount" class="text-danger"></span>
                             </div>
 
                             <div class="row mb-4">
                                 <div class="col-md-6">
-                                    <label asp-for="DonationType" class="form-label fw-bold">🔄 Donation Type</label>
+                                    <label asp-for="DonationType" class="form-label fw-bold"><i class="fa-solid fa-arrows-rotate"></i> Donation Type</label>
                                     <select asp-for="DonationType" class="form-select form-select-lg bg-light">
                                         <option value="One-Time">One-Time</option>
                                         <option value="Recurring">Recurring</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 mt-3 mt-md-0">
-                                    <label asp-for="Currency" class="form-label fw-bold">🌍 Currency</label>
+                                    <label asp-for="Currency" class="form-label fw-bold"><i class="fa-solid fa-earth-africa"></i> Currency</label>
                                     <select asp-for="Currency" class="form-select form-select-lg bg-light">
                                         <option value="ZAR">ZAR (R)</option>
                                         <option value="USD">USD ($)</option>
@@ -57,10 +57,10 @@
 
                             <div class="form-check form-switch mb-4">
                                 <input asp-for="IsAnonymous" class="form-check-input" type="checkbox" role="switch" />
-                                <label asp-for="IsAnonymous" class="form-check-label text-muted">🕵️ Donate Anonymously (Hides name from public)</label>
+                                <label asp-for="IsAnonymous" class="form-check-label text-muted"><i class="fa-solid fa-user-secret"></i> Donate Anonymously (Hides name from public)</label>
                             </div>
 
-                            <button type="submit" class="btn btn-warning btn-lg w-100 fw-bold text-dark shadow">Donate Now ❤️</button>
+                            <button type="submit" class="btn btn-warning btn-lg w-100 fw-bold text-dark shadow">Donate Now <i class="fa-solid fa-heart"></i></button>
                         </form>
                     </div>
                 </div>

@@ -6,7 +6,7 @@
 <section class="py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold">⭐ What People Are Saying</h2>
+            <h2 class="fw-bold"><i class="fa-solid fa-star"></i> What People Are Saying</h2>
             <p class="text-muted">Read testimonials from our donors, volunteers, and community members.</p>
         </div>
 
@@ -34,7 +34,7 @@
 
             <div class="col-lg-5">
                 <div class="card border-0 shadow-lg rounded-4 sticky-top" style="top: 20px;">
-                    <div class="card-header bg-dark text-white fw-bold py-3">✍️ Leave a Review</div>
+                    <div class="card-header bg-dark text-white fw-bold py-3"><i class="fa-solid fa-pen-to-square"></i> Leave a Review</div>
                     <div class="card-body p-4">
                         <form asp-action="Index" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
@@ -54,18 +54,18 @@
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Rating (1-5)</label>
                                 <select name="Rating" class="form-select bg-light" required>
-                                    <option value="5">5 - Excellent 🌟</option>
-                                    <option value="4">4 - Very Good ⭐</option>
-                                    <option value="3">3 - Good ⭐</option>
-                                    <option value="2">2 - Fair ⭐</option>
-                                    <option value="1">1 - Poor ⭐</option>
+                                    <option value="5">5 - Excellent ★</option>
+                                    <option value="4">4 - Very Good ★</option>
+                                    <option value="3">3 - Good ★</option>
+                                    <option value="2">2 - Fair ★</option>
+                                    <option value="1">1 - Poor ★</option>
                                 </select>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label fw-bold">Your Review</label>
                                 <textarea name="Comment" class="form-control bg-light" rows="4" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-warning w-100 fw-bold text-dark shadow">Submit Review 🚀</button>
+                            <button type="submit" class="btn btn-warning w-100 fw-bold text-dark shadow">Submit Review <i class="fa-solid fa-paper-plane"></i></button>
                         </form>
                     </div>
                 </div>

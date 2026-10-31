@@ -1,8 +1,10 @@
 @model IEnumerable<APPR_POE_FINAL.Models.Donation>
-@{ ViewData["Title"] = "Donations"; }
+@{
+    ViewData["Title"] = "Donations";
+}
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold">?? Donation History</h2>
+        <h2 class="fw-bold"><i class="fa-solid fa-clock-rotate-left"></i> Donation History</h2>
         <a asp-action="Dashboard" class="btn btn-outline-dark">Back to Dashboard</a>
     </div>
     <div class="card border-0 shadow-sm">
@@ -23,9 +25,16 @@
                             <td>@d.DonationDate.ToString("dd MMM yyyy")</td>
                             <td class="fw-bold">@d.Currency @d.Amount</td>
                             <td>@d.DonationType</td>
-                            <td>@(d.IsAnonymous ? "Yes ???" : "No")</td>
-                        </tr>
-                    }
+                            <td>@if (d.IsAnonymous) {
+                            <text>Yes <i class="fa-solid fa-user-secret"></i></text>
+                        } else
+                        {
+
+                            <text>No</text>
+                        }
+</td>
+                    </tr>
+                                        }
                 </tbody>
             </table>
         </div>

@@ -9,14 +9,21 @@
             <div class="col-lg-8">
                 <div class="card border-0 shadow-lg rounded-4">
                     <div class="card-body p-5 text-center">
-                        <h1 class="display-4 text-success mb-3">🎉</h1>
+                        <h1 class="display-4 text-success mb-3"><i class="fa-solid fa-champagne-glasses"></i></h1>
                         <h2 class="fw-bold">Donation Received!</h2>
                         <p class="text-muted mb-4">Thank you for supporting Gift of the Givers.</p>
 
                         <div class="bg-light rounded-3 p-4 text-start mb-4">
                             <div class="row mb-3">
                                 <div class="col-sm-4 fw-bold text-muted">Donor</div>
-                                <div class="col-sm-8 fw-bold">@(Model.IsAnonymous ? "Anonymous Donor 🕵️" : (Model.DonorName ?? "Guest"))</div>
+                                <div class="col-sm-8 fw-bold">@if (Model.IsAnonymous) {
+                                <text>Anonymous Donor <i class="fa-solid fa-user-secret"></i></text>
+                                                                } else
+                                {
+
+                                    @(Model.DonorName ?? "Guest")
+                                }
+</div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-4 fw-bold text-muted">Amount</div>
@@ -34,7 +41,7 @@
 
                         <!-- THE PDF BUTTON -->
                         <a asp-action="DownloadCertificate" asp-route-id="@Model.Id" class="btn btn-success btn-lg fw-bold shadow w-100 mb-3">
-                            📥 Download Official Tax Certificate (PDF)
+                            <i class="fa-solid fa-file-arrow-down"></i> Download Official Tax Certificate (PDF)
                         </a>
 
                         <a asp-controller="Home" asp-action="Index" class="btn btn-outline-dark w-100">

@@ -8,8 +8,6 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  project: '**/APPR_POE_FINAL.csproj'
-  testProject: '**/APPR_POE_FINAL.Tests.csproj'
   buildConfiguration: 'Release'
 
 steps:
@@ -29,13 +27,20 @@ steps:
     displayName: 'Build ASP.NET Core project'
     inputs:
       command: 'build'
-      projects: '$(project)'
+      projects: 'APPR_POE_FINAL.csproj'
+      arguments: '--configuration $(buildConfiguration) --no-restore'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Build Azure Functions project'
+    inputs:
+      command: 'build'
+      projects: 'GiftoftheGivers.Functions/GiftoftheGivers.Functions.csproj'
       arguments: '--configuration $(buildConfiguration) --no-restore'
 
   - task: DotNetCoreCLI@2
     displayName: 'Run Unit and Integration Tests'
     inputs:
       command: 'test'
-      projects: '$(testProject)'
+      projects: 'APPR_POE_FINAL.Tests/APPR_POE_FINAL.Tests.csproj'
       publishTestResults: true
-      arguments: '--configuration $(buildConfiguration) --filter "FullyQualifiedName!~SeleniumTests"'
+      arguments: '--configuration $(buildConfiguration) --no-restore --filter "FullyQualifiedName!~SeleniumTests"'

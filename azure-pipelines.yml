@@ -1,3 +1,4 @@
+
 trigger:
   branches:
     include:
@@ -7,7 +8,8 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  project: 'APPR_POE_FINAL.csproj'
+  project: '**/APPR_POE_FINAL.csproj'
+  testProject: '**/APPR_POE_FINAL.Tests.csproj'
   buildConfiguration: 'Release'
 
 steps:
@@ -21,7 +23,7 @@ steps:
     displayName: 'Restore NuGet packages'
     inputs:
       command: 'restore'
-      projects: '$(project)'
+      projects: '**/*.csproj'
 
   - task: DotNetCoreCLI@2
     displayName: 'Build ASP.NET Core project'
@@ -34,5 +36,6 @@ steps:
     displayName: 'Run Unit and Integration Tests'
     inputs:
       command: 'test'
-      projects: '**/*Tests/*.csproj'
+      projects: '$(testProject)'
+      publishTestResults: true
       arguments: '--configuration $(buildConfiguration) --filter "FullyQualifiedName!~SeleniumTests"'

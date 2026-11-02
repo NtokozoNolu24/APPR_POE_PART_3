@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="APPR_POE_FINAL.Tests/APPR_POE_FINAL.Tests.csproj" />
+  <Project Path="APPR_POE_FINAL.csproj" />
+  <Project Path="GiftOfTheGivers.Common/GiftOfTheGivers.Common.csproj" />
+  <Project Path="GiftoftheGivers.Functions/GiftoftheGivers.Functions.csproj" Id="ca65e1b1-64b1-4596-82d8-910ef0d05754" />
+</Solution>

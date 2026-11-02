@@ -22,4 +22,9 @@
 	  <Folder Include="Areas\Identity\" />
 	</ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="APPR_POE_FINAL.Tests\**\*.cs" />
+    <Compile Remove="GiftOfTheGivers.Common\**\*.cs" />
+    <Compile Remove="GiftoftheGivers.Functions\**\*.cs" />
+  </ItemGroup>
 </Project>

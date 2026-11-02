@@ -30,3 +30,10 @@ steps:
     command: 'build'
     projects: '$(project)'
     arguments: '--configuration $(buildConfiguration) --no-restore'
+
+      - task: DotNetCoreCLI@2
+    displayName: 'Run Unit and Integration Tests'
+    inputs:
+      command: 'test'
+      projects: '**/*Tests/*.csproj'
+      arguments: '--configuration $(buildConfiguration) --filter "FullyQualifiedName!~SeleniumTests"'
